@@ -1,0 +1,25 @@
+name: ci-template
+
+on:
+  pull_request:
+  push:
+    branches: [main, "release/*"]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint/Test placeholder
+        run: |
+          echo "Run lint and tests here"
+
+  offline-build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Offline build smoke
+        run: |
+          chmod +x scripts/*.sh || true
+          ./scripts/build_offline.sh
+
